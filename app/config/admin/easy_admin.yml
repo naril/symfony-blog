@@ -1,0 +1,73 @@
+parameters:
+     easy_admin.entity_namespace: AppBundle\Entity\
+easy_admin:
+   entities:
+      Posts:
+         class: AppBundle\Entity\Post
+         controller: AppBundle\Controller\PostAdminController
+         form:
+            fields:
+                - 'title'
+                - { property: 'content', type: 'ckeditor' }
+                - 'category'
+                - 'tags'
+                - 'published'
+                - 'updateAt'
+
+         list:
+            fields:
+                - 'id'
+                - 'title'
+                - 'content'
+                - 'category'
+                - 'tags'
+                - 'comments'
+      Comment:
+         class: AppBundle\Entity\Comment
+         form:
+            fields:
+                - 'name'
+                - { property: 'text', type: 'ckeditor' }
+                - 'published'
+                - 'blocked'
+         list:
+            fields:
+                - 'name'
+                - 'text'
+                - 'published'
+                - 'blocked'
+                - 'post'
+      Category:
+          class: AppBundle\Entity\Category
+          form:
+            fields:
+              - 'name'
+      Tag:
+          class: AppBundle\Entity\Tag
+          form:
+            fields:
+              - 'name'
+      User:
+          controller: AppBundle\Controller\UserAdminController
+          class: AppBundle\Entity\User
+          form:
+            fields:
+               - 'name'
+               - 'username'
+               - 'password'
+      Email:
+          class: AppBundle\Entity\Notification
+          form:
+            fields:
+               - 'name'
+               - { property: 'entity', type: 'AppBundle\Form\EntitySelectType' }
+               - 'sendTo'
+               - 'subject'
+               - { property: 'text', type: 'ckeditor' }
+          list:
+            fields:
+               - 'name'
+               - 'entity'
+               - 'sendTo'
+               - 'subject'
+               - 'active'
