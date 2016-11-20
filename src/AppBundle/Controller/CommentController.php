@@ -18,7 +18,7 @@ class CommentController
     }
 
     /**
-     * @Route("/post/{postId}/comments")
+     * @Route("/admin/post/{postId}/comments")
      * @Template("comments/list.html.twig")
      */
     public function getCommentsAction($postId)

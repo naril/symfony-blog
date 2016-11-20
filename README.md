@@ -68,4 +68,4 @@ Enjoy!
 [13]: https://symfony.com/doc/3.0/bundles/SensioGeneratorBundle/index.html
 
 
-TODO: translate, front (twig cache)
+TODO: translate, front (vue.js)
