@@ -31,7 +31,7 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/logout")
+     * @Route("/logout", name="app.admin_logout")
      */
     public function logout()
     {

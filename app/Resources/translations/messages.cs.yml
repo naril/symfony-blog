@@ -1,3 +1,4 @@
 app.comments: Komentáře
 app.comments.allow: povolit
 app.comments.disallow: zakazat
+app.admin.logout: Odhlásit
