@@ -24,7 +24,7 @@ class PostAdminController extends AdminController
 
         foreach ($comments as $comment) {
             $comment->setPost($entity);
-            $comment_ids[] = $entity->getId();
+            $comment_ids[] = $comment->getId();
         }
 
         $query = $this->em->createQueryBuilder();

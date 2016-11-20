@@ -20,7 +20,6 @@ easy_admin:
             fields:
                 - 'id'
                 - 'title'
-                - 'content'
                 - 'category'
                 - 'tags'
                 - 'comments'
