@@ -3,6 +3,8 @@ parameters:
 easy_admin:
    entities:
       Posts:
+         templates:
+            edit: admin/comments/edit.html.twig
          class: AppBundle\Entity\Post
          controller: AppBundle\Controller\PostAdminController
          form:
@@ -30,10 +32,10 @@ easy_admin:
                 - { property: 'text', type: 'ckeditor' }
                 - 'published'
                 - 'blocked'
+                - 'post'
          list:
             fields:
                 - 'name'
-                - 'text'
                 - 'published'
                 - 'blocked'
                 - 'post'

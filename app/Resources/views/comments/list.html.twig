@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="comment-container">
+        {% for comment in comments %}
+                <div class="row">
+                    <div class="comment comment-{{ comment.id }} row {% if comment.blocked %}blocked{% else %}active{% endif %}">
+                        <div class="col-sm-6">
+                            <h3>{{ comment.name }} <small>{{ comment.published|date("Y-m-d") }}</small></h3>
+                        </div>
+                        <div class="col-sm-6 buttons text-right">
+                            <a href="#" class="btn btn-primary js-comments-allow" data-id="{{ comment.id }}">{{ 'app.comments.allow' | trans }}</a>  <a class="btn btn-primary btn-danger js-comments-block" href="#" data-id="{{ comment.id }}">{{ 'app.comments.disallow' | trans }}</a>
+                        </div>
+                        <div class="col-sm-12">
+                            {{ comment.text|raw }}
+                        </div>
+                    </div>
+                </div>
+            <hr>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="application/javascript">
+        $(document).ready(function () {
+            $('.js-comments-allow').on('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var id = $(this).data('id');
+                $.ajax({method:'get', url: '/admin/?action=edit&entity=Comment&view=list&id='+id+'&property=blocked&newValue=false'}).done(function () {
+                    $('.comment-'+id).removeClass('blocked').addClass('active');
+                });
+            });
+
+            $('.js-comments-block').on('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var id = $(this).data('id');
+                $.ajax({method:'get', url: '/admin/?action=edit&entity=Comment&view=list&id='+id+'&property=blocked&newValue=true'}).done(function () {
+                    $('.comment-'+id).removeClass('active').addClass('blocked');
+                });
+            });
+        });
+    </script>
+{% endblock %}

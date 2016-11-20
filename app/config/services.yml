@@ -31,3 +31,7 @@ services:
         arguments: ["@app.entity_lister", "%easy_admin.entity_namespace%"]
         tags:
             - { name: form.type, alias: entity_select }
+
+    app.comment_controller:
+        class: AppBundle\Controller\CommentController
+        arguments: ["@doctrine.orm.entity_manager"]

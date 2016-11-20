@@ -1,0 +1,9 @@
+{% extends '@EasyAdmin/default/edit.html.twig' %}
+
+{% block main %}
+    {{ parent() }}
+    <h2>{{ 'app.comments' | trans }}</h2>
+    <hr>
+
+    {{ render(controller('AppBundle:Comment:getComments', {'postId' : _entity_id} )) }}
+{% endblock %}
